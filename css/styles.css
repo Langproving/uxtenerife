@@ -5800,3 +5800,6 @@ body {
     background-color: #99cc00;
   }
 }
+body.variation .marketing-box {
+  background-color: #333;
+}

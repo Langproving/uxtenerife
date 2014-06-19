@@ -1,6 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+  <!-- Google Analytics Content Experiment code -->
+  <script>function utmx_section(){}function utmx(){}(function(){var
+          k='87572549-1',d=document,l=d.location,c=d.cookie;
+    if(l.search.indexOf('utm_expid='+k)>0)return;
+    function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+            indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+            length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+                    '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+                    '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+                    '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+                    valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+                    '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+  </script><script>utmx('url','A/B');</script>
+  <!-- End of Google Analytics Content Experiment code -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-52108002-1', 'langproving.github.io');
+    ga('send', 'pageview');
+
+  </script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UX Tenerife Boilerplate</title>
@@ -89,5 +115,40 @@
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script>
+
+    // Utility function to setup events when clicking on DOM elements.
+    function trackClickOnElement($link, category, action, label) {
+      $link.on('click', function() {
+        ga('send', 'event', category, action, label);
+        return true;
+      });
+    }
+    $(function() {
+
+      // Buttons that are going to trigger the Analytics event.
+      var $mainButton = $('#main-button'),
+              $secondaryButton = $('.secondary-button');
+
+      // Strings for the event description.
+      var category = 'Main Events',
+              mainAction = 'Main Button Action',
+              secondaryAction = 'Secondary Button Action',
+              mainLabel = mainAction,
+              secondaryLabel = secondaryAction;
+
+      // We call the utility function to setup the tracking.
+      trackClickOnElement($mainButton,
+              category,
+              mainAction,
+              mainLabel);
+      trackClickOnElement($secondaryButton,
+              category,
+              secondaryAction,
+              secondaryLabel);
+    });
+
+
+  </script>
 </body>
 </html>
